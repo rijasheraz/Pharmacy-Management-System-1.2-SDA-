@@ -13,8 +13,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Pharmacy_store_details extends javax.swing.JFrame {
 
-    private Object textfield7;
-
     /**
      * Creates new form Pharmacy_store_details
      */
@@ -264,11 +262,11 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addGap(183, 183, 183)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,9 +320,10 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton4)
                         .addComponent(jButton3)))
                 .addGap(18, 18, 18)
@@ -364,55 +363,24 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-     private void jButton2(){
-         
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jComboBox7.setSelectedIndex(0);
-        jTextField8.setText("");
-        String order_date = jComboBox1.getSelectedItem().toString() +
-                  jComboBox2.getSelectedItem().toString() +
-                  jComboBox3.getSelectedItem().toString();
-        String delivery_date = jComboBox4.getSelectedItem().toString() +
-                  jComboBox5.getSelectedItem().toString() +
-                  jComboBox6.getSelectedItem().toString();
-        String order_date1 = order_date;
-        String deliverydate2 = delivery_date;
-         
-    
-    }
-    
-    private void jButton3(){
-            DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-
-        int i =jTable1.getSelectedRow();
-        model.setValueAt(jTextField1.getText(),i,0);
-       model.setValueAt(jTextField2.getText(),i,1);
-       model.setValueAt(jTextField3.getText(),i,2);
-       model.setValueAt(jTextField4.getText(),i,3);
-       model.setValueAt(jTextField5.getText(),i,4);
-       model.setValueAt(jTextField6.getText(),i,5);
-       model.setValueAt(jTextField7.getText(),i,6);
-       model.setValueAt(jComboBox7.getSelectedItem(),i,7);
-       model.setValueAt(jTextField8.getText(),i,8);
-       String order_date = jComboBox1.getSelectedItem().toString() +
-                  jComboBox2.getSelectedItem().toString() +
-                  jComboBox3.getSelectedItem().toString();
-        String delivery_date = jComboBox4.getSelectedItem().toString() +
-                  jComboBox5.getSelectedItem().toString() +
-                  jComboBox6.getSelectedItem().toString();
-        String order_date1 = order_date;
-        String delivery_date1 = delivery_date;
-        model.setValueAt(order_date1, i, 9);
-        model.setValueAt(delivery_date1, i, 10);
-        
-        
-    }
+    private void clearFields() {
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText("");
+    jComboBox7.setSelectedIndex(0);
+    jTextField8.setText("");
+    jComboBox1.setSelectedIndex(0);
+    jComboBox2.setSelectedIndex(0);
+    jComboBox3.setSelectedIndex(0);
+    jComboBox4.setSelectedIndex(0);
+    jComboBox5.setSelectedIndex(0);
+    jComboBox6.setSelectedIndex(0);
+}
+ 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       try {
         // Get and validate order date
@@ -452,6 +420,9 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
             delivery_date
         });
 
+        // Clear the form fields after adding data
+        clearFields();
+
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Please enter valid integers in the numeric fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
     } catch (IllegalArgumentException e) {
@@ -459,69 +430,59 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
- 
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          
-        try {
-        // Validate that the fields are not empty
-        if (jTextField5.getText().isEmpty() || jTextField7.getText().isEmpty() || jTextField8.getText().isEmpty()) {
-            throw new IllegalArgumentException("Numeric fields cannot be empty.");
-        }
-
-        // Validate integer fields
-        int intField5 = Integer.parseInt(jTextField5.getText());
-        int intField7 = Integer.parseInt(jTextField7.getText());
-        int intField8 = Integer.parseInt(jTextField8.getText());
-
-        // Validate email field
-        String email = jTextField3.getText();
-        if (email.isEmpty()) {
-            throw new IllegalArgumentException("Email field cannot be empty.");
-        }
-        if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new IllegalArgumentException("Invalid email format.");
-        }
-
-        // Get and validate order date
-        String order_date = jComboBox1.getSelectedItem().toString() +
-                            jComboBox2.getSelectedItem().toString() +  
-                            jComboBox3.getSelectedItem().toString();
-
-        // Get and validate delivery date
-        String delivery_date = jComboBox4.getSelectedItem().toString() +
-                               jComboBox5.getSelectedItem().toString() +
-                               jComboBox6.getSelectedItem().toString();
-
-        // Add data to the table model
+       try {
+        // Get selected row index
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{
-            jTextField1.getText(),
-            jTextField2.getText(),
-            email,
-            jTextField4.getText(),
-            intField5,   // parsed integer
-            jTextField6.getText(),
-            intField7,   // parsed integer
-            jComboBox7.getSelectedItem(),
-            intField8,   // parsed integer
-            order_date,
-            delivery_date
-        });
+        int i = jTable1.getSelectedRow();
 
-        // Clear the form fields
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jComboBox7.setSelectedIndex(0);
-        jTextField8.setText("");
+        if (i >= 0) {
+            // Get and validate order date
+            String order_date = jComboBox1.getSelectedItem().toString() +
+                                jComboBox2.getSelectedItem().toString() +  
+                                jComboBox3.getSelectedItem().toString();
+
+            // Get and validate delivery date
+            String delivery_date = jComboBox4.getSelectedItem().toString() +
+                                   jComboBox5.getSelectedItem().toString() +
+                                   jComboBox6.getSelectedItem().toString();
+
+            // Validate integer fields
+            int intField5 = Integer.parseInt(jTextField5.getText());
+            int intField7 = Integer.parseInt(jTextField7.getText());
+            int intField8 = Integer.parseInt(jTextField8.getText());
+
+            // Validate email field
+            String email = jTextField3.getText();
+            if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+                throw new IllegalArgumentException("Invalid email format.");
+            }
+
+            // Update data in table model
+            model.setValueAt(jTextField1.getText(), i, 0);
+            model.setValueAt(jTextField2.getText(), i, 1);
+            model.setValueAt(email, i, 2);
+            model.setValueAt(jTextField4.getText(), i, 3);
+            model.setValueAt(intField5, i, 4);
+            model.setValueAt(jTextField6.getText(), i, 5);
+            model.setValueAt(intField7, i, 6);
+            model.setValueAt(jComboBox7.getSelectedItem(), i, 7);
+            model.setValueAt(intField8, i, 8);
+            model.setValueAt(order_date, i, 9);
+            model.setValueAt(delivery_date, i, 10);
+
+            // Clear fields after update
+            clearFields();
+
+            JOptionPane.showMessageDialog(this, "Update Successful!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to update.", "Update Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Please enter valid integers in the numeric fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
@@ -530,6 +491,9 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+
+         
 
 
          
@@ -538,17 +502,16 @@ public class Pharmacy_store_details extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-         jButton2();
-        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-        int i=jTable1.getSelectedRow();
-        if(i>=0)
-        {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    int i = jTable1.getSelectedRow();
+    
+    if (i >= 0) {
         model.removeRow(i);
-          JOptionPane.showMessageDialog(this,"Delete Successfully!");
-        }else{
-            JOptionPane.showMessageDialog(null,"please Slect a Row First");
-        }
+        JOptionPane.showMessageDialog(this, "Deleted Successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row first.");
+    }
+
                        
     }//GEN-LAST:event_jButton3ActionPerformed
 
